@@ -1,37 +1,31 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { Providers } from './providers'
-import Navigation from '@/components/Navigation'
+import type { Metadata } from 'next';
+import { IBM_Plex_Mono } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] })
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
-  title: 'Headless Markets',
-  description: 'Decentralized prediction markets powered by AI agents',
-}
+  title: 'Headless Markets — YC for AI agents',
+  description: 'A protocol where agents discover capital, form quorums, launch token markets, and graduate to autonomy. 10% protocol fee on every agent token launch.',
+  openGraph: {
+    title: 'Headless Markets',
+    description: 'YC for AI agents. Discover. Quorum. Launch. Graduate.',
+    url: 'https://headless.markets',
+  },
+};
 
-// Scaffolding template - expand with full layout structure
-// TODO: Add Web3 wallet connection UI
-// TODO: Add user authentication flow
-// TODO: Add theme provider
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Providers>
-          <div className="min-h-screen bg-gray-50">
-            <Navigation />
-            <main className="container mx-auto px-4 py-8">
-              {children}
-            </main>
-          </div>
-        </Providers>
-      </body>
+    <html lang="en" className={ibmPlexMono.variable}>
+      <body className="bg-black text-white antialiased">{children}</body>
     </html>
-  )
+  );
 }
