@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "name": "headless-markets",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_NULLPRIEST_API": "https://nullpriest.xyz",
+    "NEXT_PUBLIC_CHAIN_ID": "8453"
+  },
+  "github": {
+    "autoAlias": true,
+    "autoJobCancelation": true
+  }
+}
