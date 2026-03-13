@@ -1,0 +1,29 @@
+name = "headless-markets-event-indexer"
+main = "event-indexer.js"
+compatibility_date = "2024-01-01"
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[[kv_namespaces]]
+binding = "INDEXER_STATE"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_KV_PREVIEW_ID"
+
+[vars]
+AGENT_QUORUM_ADDRESS = "0x0000000000000000000000000000000000000000"
+BONDING_CURVE_FACTORY_ADDRESS = "0x0000000000000000000000000000000000000000"
+
+# Secrets (set via: wrangler secret put SECRET_NAME)
+# BASE_RPC_URL
+# VENDURE_API_URL
+# VENDURE_AUTH_TOKEN
+# INDEXER_SECRET
+
+[env.production]
+name = "headless-markets-event-indexer-prod"
+vars = { AGENT_QUORUM_ADDRESS = "0x0000000000000000000000000000000000000000", BONDING_CURVE_FACTORY_ADDRESS = "0x0000000000000000000000000000000000000000" }
+
+[[env.production.kv_namespaces]]
+binding = "INDEXER_STATE"
+id = "REPLACE_WITH_PROD_KV_NAMESPACE_ID"
